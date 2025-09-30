@@ -1,0 +1,151 @@
+/* ------------------------------
+   General Reset & Base Styles
+------------------------------ */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(to right, #141e30, #243b55);
+    color: #fff;
+    min-height: 100vh;
+}
+
+/* ------------------------------
+   Fixed Glassmorphic Navbar
+------------------------------ */
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.08);
+    padding: 10px 20px;
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+}
+
+.navbar-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 1200px;
+}
+
+.nav-left .logo {
+    height: 40px;
+}
+
+.nav-right {
+    display: flex;
+    gap: 30px;
+}
+
+.nav-right a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 17px;
+    transition: color 0.3s ease;
+}
+
+.nav-right a:hover {
+    color: #03a9f4;
+}
+
+/* ------------------------------
+   Glass Container for Pages
+------------------------------ */
+.glass-container {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    padding: 30px 20px;
+    margin: 100px auto 30px auto;
+    width: 90%;
+    max-width: 700px;
+    box-shadow: 0 8px 32px rgba(31, 38, 135, 0.37);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    animation: fadeIn 1s ease-in-out;
+    text-align: center;
+}
+
+/* ------------------------------
+   Form Input: File Upload
+------------------------------ */
+input[type="file"] {
+    padding: 10px;
+    border: 2px dashed #00c6ff;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.05);
+    color: white;
+    width: 100%;
+    max-width: 360px;
+    margin-bottom: 15px;
+}
+
+/* ------------------------------
+   Predict Button + Link Styles
+------------------------------ */
+input[type="submit"],
+.glass-container a {
+    background: linear-gradient(to right, #00c6ff, #0072ff);
+    color: white;
+    font-weight: 600;
+    padding: 12px 24px;
+    border-radius: 30px;
+    border: none;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+    font-size: 16px;
+    text-decoration: none;
+    display: inline-block;
+    margin-top: 10px;
+}
+
+input[type="submit"]:hover,
+.glass-container a:hover {
+    transform: scale(1.05);
+    background: linear-gradient(to right, #0072ff, #00c6ff);
+}
+
+/* ------------------------------
+   Animation
+------------------------------ */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(30px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ------------------------------
+   Responsive Styles
+------------------------------ */
+@media (max-width: 768px) {
+    .navbar-content {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    .nav-right {
+        flex-direction: column;
+        width: 100%;
+        gap: 10px;
+        padding-top: 10px;
+    }
+
+    .nav-right a {
+        font-size: 16px;
+        margin: 4px 0;
+    }
+
+    input[type="submit"],
+    input[type="file"] {
+        width: 100%;
+        max-width: 250px;
+    }
+}

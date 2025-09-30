@@ -1,0 +1,37 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Kidney Stone Predictor | Home</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="icon" href="{% static 'images/favicoN.ico' %}">
+</head>
+<body>
+    <div class="navbar">
+        <div class="navbar-content">
+            <div class="nav-left">
+                <img src="{% static 'images/logo.png' %}" class="logo" alt="Logo"> 
+            </div>
+            <div class="nav-right">
+                <a href="/">Home</a>
+                <a href="/predict">Predict</a>
+                <a href="/about/">About</a>
+            </div>
+        </div>
+    </div>
+    
+    
+
+    <div class="glass-container">
+        <h1>🔬 AI-Driven Kidney Stone Disease Prediction</h1>
+        <p>This web app allows users to upload kidney MRI scans and uses a trained AI model to classify the condition.</p>
+        <h2>How to Use:</h2>
+        <ul>
+            <li>Go to the <strong>Predict</strong> page.</li>
+            <li>Upload a kidney MRI image (JPG/PNG).</li>
+            <li>Get instant prediction: Cyst, Normal, Stone, or Tumor.</li>
+        </ul>
+        <a href="/predict">➡ Go to Prediction</a>
+    </div>
+</body>
+</html>

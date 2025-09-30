@@ -1,0 +1,8 @@
+env/
+venv/
+*.pth
+*.pyd
+*.dll
+*.lib
+__pycache__/
+*.log

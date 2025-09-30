@@ -1,0 +1,38 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Kidney Stone Predictor | About</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="icon" href="{% static 'images/favicoN.ico' %}">
+</head>
+<body>
+    <div class="navbar">
+        <div class="navbar-content">
+            <div class="nav-left">
+                <img src="{% static 'images/logo.png' %}" class="logo" alt="Logo"> 
+            </div>
+            <div class="nav-right">
+                <a href="/">Home</a>
+                <a href="/predict">Predict</a>
+                <a href="/about/">About</a>
+            </div>
+        </div>
+    </div>
+    
+    
+
+    <div class="glass-container">
+        <h1>📖 About the Project</h1>
+        <p><strong>Team:</strong>RiNav</p>
+        <ul>
+            <li>M.Sai Rishitha – 22891A1251</li>
+            <li>C.Navya Sri – 22891A1213</li>
+            <li>C.R.Hrithik – 22891A1211</li>
+            
+        </ul>
+        <p>This AI-powered system classifies kidney MRI scans into one of four conditions: Cyst, Normal, Stone, or Tumor.</p>
+        <p><strong>Model Type:</strong> CNN | <strong>Accuracy:</strong> 95%+ | <strong>Input:</strong> 128×128 grayscale MRI</p>
+    </div>
+</body>
+</html>

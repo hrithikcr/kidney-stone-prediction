@@ -1,0 +1,112 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Kidney MRI Classifier | Predict</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="icon" href="{% static 'images/favicoN.ico' %}">
+</head>
+<body>
+    <!-- Navbar -->
+    <div class="navbar">
+        <div class="navbar-content">
+            <div class="nav-left">
+                <img src="{% static 'images/logo.png' %}" class="logo" alt="Logo"> 
+            </div>
+            <div class="nav-right">
+                <a href="/">Home</a>
+                <a href="/predict">Predict</a>
+                <a href="/about/">About</a>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Main Content -->
+    <div class="glass-container">
+        <h1>🧠 Upload Kidney MRI for Prediction</h1>
+
+        <!-- Upload Form -->
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <input type="file" name="file" accept="image/*" required><br><br>
+            <input type="submit" value="Predict">
+        </form>
+
+        <!-- Results Section -->
+        {% if prediction %}
+            <h2>🔍 Prediction: {{ prediction }}</h2>
+
+            <!-- ======================
+                 Stone Case
+            ====================== -->
+            {% if prediction == "Stone" %}
+                {% if stone_count > 0 %}
+                    <h3>🪨 Detected Stones: {{ stone_count }}</h3>
+                    <ul>
+                        {% for size in stone_sizes %}
+                            <li>Stone size: {{ size }} mm</li>
+                        {% endfor %}
+                    </ul>
+
+                    <h3>🔥 Heat Map</h3>
+                    <img src="{{ heatmap }}" alt="Stone Heat Map" class="img-fluid">
+
+                    <h3>⚠ Effects</h3>
+                    <ul>
+                        {% for e in effects %}
+                            <li>{{ e }}</li>
+                        {% endfor %}
+                    </ul>
+                {% else %}
+                    <p>No stones detected.</p>
+                {% endif %}
+            {% endif %}
+
+            <!-- ======================
+                 Tumor Case
+            ====================== -->
+            {% if prediction == "Tumor" %}
+                <h3>🧬 Tumor Analysis</h3>
+                {% if tumor_size %}
+                    <ul>
+                        {% for size in tumor_size %}
+                            <li>Tumor region size: {{ size }} mm</li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+                {% if heatmap %}
+                    <h3>🔥 Heat Map</h3>
+                    <img src="{{ heatmap }}" alt="Tumor Heat Map" class="img-fluid">
+                {% endif %}
+                <h3>⚠ Effects</h3>
+                <ul>
+                    {% for e in effects %}
+                        <li>{{ e }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+
+            <!-- ======================
+                 Cyst Case
+            ====================== -->
+            {% if prediction == "Cyst" %}
+                <h3>💧 Cyst Information</h3>
+                <ul>
+                    {% for e in effects %}
+                        <li>{{ e }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+
+            <!-- ======================
+                 Normal Case
+            ====================== -->
+            {% if prediction == "Normal" %}
+                <h3>✅ Healthy Kidney</h3>
+                <p>{{ effects.0 }}</p>
+            {% endif %}
+
+        {% endif %}
+    </div>
+</body>
+</html>
