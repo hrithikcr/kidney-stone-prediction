@@ -10,7 +10,7 @@ Predicts kidney stone risk using machine learning models.
 Simple interface for data input.
 
 Installation
-git clone https://github.com/yourusername/kidney-stone-prediction.git
+git clone https://github.com/hrithikcr/kidney-stone-prediction.git
 cd kidney-stone-prediction
 pip install -r requirements.txt
 
